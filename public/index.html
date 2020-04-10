@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/slider.css">
+	<link rel="stylesheet" href="./css/keys.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io()
+    </script>
+</head>
+
+<body onkeypress="detectKey(event)">
+  <div class="content">
+
+    <div class="slider">
+        <h3>Motor A</h3>
+        <input type="range" class="sliderInput" id="sliderInputA" min="0" max="255" value="127">
+    </div>
+
+    <div class="slider">
+        <h3>Motor B</h3>
+        <input type="range" class="sliderInput" id="sliderInputB" min="0" max="255" value="127">
+    </div>
+
+    <div class="controller">
+        <div class="keys">
+            <div class="up arr" id="up"><i class="fa fa-arrow-up"></i></div>
+            <br />
+            <div class="left arr" id="left"><i class="fa fa-arrow-left"></i></div>
+            <div class="down arr" id="down"><i class="fa fa-arrow-down"></i></div>
+            <div class="right arr" id="right"><i class="fa fa-arrow-right"></i></div>
+        </div>
+    </div>
+
+  </div>
+  <script src="./javascript/motor.js"></script>
+</body>
+</html>

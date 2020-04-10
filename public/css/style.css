@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(93, 180, 238);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10vh;
+}
+
+.slider {
+  padding-bottom: 5vh;
+  width: 400px;
+}
