@@ -8,7 +8,7 @@ async function delay(ms) {
     return await new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export class Ultrassonic {
+class Ultrassonic {
     constructor(echoPin, triggerPin) {
         this.trigger = new Gpio(triggerPin, { mode: Gpio.OUTPUT });
         this.echo = new Gpio(echoPin, { mode: Gpio.INPUT, alert: true });
@@ -49,3 +49,5 @@ export class Ultrassonic {
         return averageMeasure
     }
 }
+
+module.exports = Ultrassonic

@@ -4,7 +4,7 @@ const io = require('../index')
 // Considerando um Encoder de 10 cm com 12 furos
 const DISTANCE = 2.62
 
-export class Encoder {
+class Encoder {
     constructor(motor, pin) {
         this.motor = motor
         this.pin = pin
@@ -42,3 +42,5 @@ export class Encoder {
     }
 
 }
+
+module.exports = Encoder

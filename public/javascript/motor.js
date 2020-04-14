@@ -9,37 +9,37 @@ document.addEventListener ('keypress', (event) => {
     const keyName = event.key;
     switch(keyName) {
         case 'w':
-            socket.emmit('motor', { direction: 'up' })
+            socket.emit('motor', { direction: 'up' })
             break
         case 'a':
-            socket.emmit('motor', { direction: 'left' })
+            socket.emit('motor', { direction: 'left' })
             break
         case 's':
-            socket.emmit('motor', { direction: 'down' })
+            socket.emit('motor', { direction: 'down' })
             break
         case 'd':
-            socket.emmit('motor', { direction: 'right' })
+            socket.emit('motor', { direction: 'right' })
             break
     }
 })
 
 up.addEventListener('click', function() {
-    socket.emmit('motor', { direction: 'up' })
+    socket.emit('motor', { direction: 'up' })
 })    
 left.addEventListener('click', function() {
-    socket.emmit('motor', { direction: 'left' })
+    socket.emit('motor', { direction: 'left' })
 })    
 down.addEventListener('click', function() {
-    socket.emmit('motor', { direction: 'down' })
+    socket.emit('motor', { direction: 'down' })
 })    
 right.addEventListener('click', function() {
-    socket.emmit('motor', { direction: 'right' })
+    socket.emit('motor', { direction: 'right' })
 })
 sliderA.addEventListener('change', function() {
     var pwm = parseInt(this.value)
-    socket.emmit('pwm', { pwm, motor: 'A' })
+    socket.emit('pwm', { pwm, motor: 'A' })
 })
 sliderB.addEventListener('change', function() {
     var pwm = parseInt(this.value)
-    socket.emmit('pwm', { pwm, motor: 'B' })
+    socket.emit('pwm', { pwm, motor: 'B' })
 })
