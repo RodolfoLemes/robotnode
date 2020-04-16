@@ -18,7 +18,7 @@ class Encoder {
 
         this.gpio.on('interrupt', () => {
             this.cont++
-            setDistance(true);
+            setDistance();
             io.emit('encoder', { 
                 type: this.motor,
                 encoder: {

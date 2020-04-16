@@ -47,6 +47,9 @@ io.on('connection', function (socket) {
             case 'right':
                 Motor.turn(true)
                 break
+
+            case 'pause':
+                Motor.shutdown(true)
         }
     });
 

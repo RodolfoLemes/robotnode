@@ -2,8 +2,10 @@ var up = document.getElementById("up")
 var left = document.getElementById("left")
 var down = document.getElementById("down")
 var right = document.getElementById("right")
+var buttonPause = document.getElementById("stop")
 var sliderA = document.getElementById('sliderInputA')
 var sliderB = document.getElementById('sliderInputB')
+
 
 document.addEventListener ('keypress', (event) => {
     const keyName = event.key;
@@ -42,4 +44,7 @@ sliderA.addEventListener('change', function() {
 sliderB.addEventListener('change', function() {
     var pwm = parseInt(this.value)
     socket.emit('pwm', { pwm, motor: 'B' })
+})
+buttonPause.addEventListener('click', function() {
+    socket.emit('motor', { direction: 'pause' })
 })
