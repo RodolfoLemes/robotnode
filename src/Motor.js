@@ -23,38 +23,38 @@ module.exports = {
     },
 
     forward() {
+        this.shutdown(false)
         motorA[0].digitalWrite(1)
         motorB[0].digitalWrite(1)
         motorA[1].digitalWrite(0)
         motorB[1].digitalWrite(0)
-        this.shutdown(false)
     },
 
     backward() {
+        this.shutdown(false)
         motorA[0].digitalWrite(0)
         motorB[0].digitalWrite(0)
         motorA[1].digitalWrite(1)
         motorB[1].digitalWrite(1)
-        this.shutdown(false)
     },
 
     turn(mode) {
+        this.shutdown(false)
         if(mode) { // DIREITA
             motorA[0].digitalWrite(0)
             motorB[0].digitalWrite(1)
             motorA[1].digitalWrite(1)
             motorB[1].digitalWrite(0)
-            this.shutdown(false)
         } else { // ESQUERDA
             motorA[0].digitalWrite(1)
             motorB[0].digitalWrite(0)
             motorA[1].digitalWrite(0)
             motorB[1].digitalWrite(1)
-            this.shutdown(false)
         }
     },
 
     lock() {
+        this.shutdown(false)
         motorA[0].digitalWrite(1)
         motorB[0].digitalWrite(1)
         motorA[1].digitalWrite(1)

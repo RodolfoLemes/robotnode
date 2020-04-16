@@ -12,15 +12,15 @@ const encoderA = new Encoder('A', 17)
 const encoderB = new Encoder('B', 18)
 
 // Eccho-INPUT ----- Trigger-OUTPUT
-const ultrassonicA = new Ultrassonic(5, 6).init()
-const ultrassonicB = new Ultrassonic(19, 26).init()
-const ultrassonicC = new Ultrassonic(16, 20).init()
-const ultrassonicD = new Ultrassonic(21, 25).init()
+//const ultrassonicA = new Ultrassonic(5, 6).init()
+//const ultrassonicB = new Ultrassonic(19, 26).init()
+//const ultrassonicC = new Ultrassonic(16, 20).init()
+//const ultrassonicD = new Ultrassonic(21, 25).init()
 
-setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicA.getDistance(), 'A'), 0)
-setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicB.getDistance(), 'B'), 0)
-setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicC.getDistance(), 'C'), 0)
-setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicD.getDistance(), 'D'), 0)
+//setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicA.getDistance(), 'A'), 0)
+//setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicB.getDistance(), 'B'), 0)
+//setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicC.getDistance(), 'C'), 0)
+//setInterval(() => Functions.sendDistanceUltrassonicToSocket(ultrassonicD.getDistance(), 'D'), 0)
 
 http.listen(8080); //listen to port 8080
 
@@ -59,3 +59,5 @@ process.on('SIGINT', function () { //on ctrl+c
     Motor.shutdown(true)
     process.exit(); //exit completely
 });
+
+module.exports = io

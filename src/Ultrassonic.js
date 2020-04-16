@@ -21,7 +21,7 @@ class Ultrassonic {
     init() {
         let startTick;
 
-        echo.on('alert', (level, tick) => {
+        this.echo.on('alert', (level, tick) => {
             if (level == 1) {
                 startTick = tick;
             } else {
@@ -34,7 +34,7 @@ class Ultrassonic {
         });
     }
 
-    getMeasure() {
+    async getMeasure() {
         for(let i = 0; i < SAMPLES; i++) {
             this.trigger.trigger(10, 1)
             await delay(100)
