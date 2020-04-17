@@ -2,7 +2,7 @@ var up = document.getElementById("up")
 var left = document.getElementById("left")
 var down = document.getElementById("down")
 var right = document.getElementById("right")
-var buttonPause = document.getElementById("stop")
+var buttonPause = document.getElementById("pause")
 var sliderA = document.getElementById('sliderInputA')
 var sliderB = document.getElementById('sliderInputB')
 

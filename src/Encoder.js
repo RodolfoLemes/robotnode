@@ -2,7 +2,8 @@ const Gpio = require('pigpio').Gpio
 const io = require('../index')
 
 // Considerando um Encoder de 10 cm com 12 furos
-const DISTANCE = 2.62
+// Roda com 15 cm de diametro
+const DISTANCE = 3.927
 
 class Encoder {
     constructor(motor, pin) {
@@ -18,7 +19,7 @@ class Encoder {
 
         this.gpio.on('interrupt', () => {
             this.cont++
-            setDistance();
+            this.setDistance();
             io.emit('encoder', { 
                 type: this.motor,
                 encoder: {
