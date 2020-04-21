@@ -4,12 +4,11 @@ var io = require('socket.io')(http)
 
 var file = new static.Server('./public')
 const Motor = require('./src/Motor')
-const Encoder = require('./src/Encoder')
 const Ultrassonic = require('./src/Ultrassonic')
 const Functions = require('./src/Functions')
 
-const encoderA = new Encoder('A', 17)
-const encoderB = new Encoder('B', 18)
+const encoderA = (require('./src/Encoder'))(io, 'A', 18)
+const encoderB = (require('./src/Encoder'))(io, 'B', 17)
 
 // Eccho-INPUT ----- Trigger-OUTPUT
 //const ultrassonicA = new Ultrassonic(5, 6).init()
@@ -58,6 +57,7 @@ io.on('connection', function (socket) {
         Motor.regularPWM(data.motor, data.pwm)
     })
 });
+
 process.on('SIGINT', function () { //on ctrl+c
     Motor.shutdown(true)
     process.exit(); //exit completely
