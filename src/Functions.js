@@ -1,8 +1,10 @@
 module.exports = {
-    sendDistanceUltrassonicToSocket(io, distance, ultrassonic) {
+    async sendDistanceUltrassonicToSocket(io, ultrassonic, name) {
+        let distance = await ultrassonic.getMeasure()
+        console.log(distance)
         io.emit('ultrassonic', {
             distance,
-            ultrassonic
+            ultrassonic: name
         })
     }
 }

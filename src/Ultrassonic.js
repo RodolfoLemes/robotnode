@@ -1,7 +1,7 @@
 const Gpio = require('pigpio').Gpio
 
 const MICROSECONDS_PER_CM = 1e6/34321
-const SAMPLES = 5
+const SAMPLES = 10
 
 async function delay(ms) {
     // return await for better async stack trace support in case of errors.
@@ -12,7 +12,7 @@ class Ultrassonic {
     constructor(echoPin, triggerPin) {
         this.trigger = new Gpio(triggerPin, { mode: Gpio.OUTPUT });
         this.echo = new Gpio(echoPin, { mode: Gpio.INPUT, alert: true });
-
+        this.pin = echoPin
         this.trigger.digitalWrite(0)
 
         this.measures = []
@@ -27,9 +27,10 @@ class Ultrassonic {
             } else {
                 const endTick = tick;
                 const diff = (endTick >> 0) - (startTick >> 0); // Unsigned 32 bit arithmetic
+                //console.log(this.pin + ' ' + diff)
                 let measure = diff / 2 / MICROSECONDS_PER_CM
                 if(measure > 400) return
-                this.measures.push(diff / 2 / MICROSECONDS_PER_CM);
+                this.measures.push(measure);
             }
         });
     }
@@ -40,12 +41,14 @@ class Ultrassonic {
             await delay(100)
         }
 
+        console.log(this.measures)
         var averageMeasure = 0
         for(let measure of this.measures) {
             averageMeasure = averageMeasure + measure
         }
         averageMeasure = averageMeasure / this.measures.length
 
+        this.measures = []
         return averageMeasure
     }
 
