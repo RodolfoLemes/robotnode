@@ -1,7 +1,5 @@
-const io = require('../index')
-
 module.exports = {
-    sendDistanceUltrassonicToSocket(distance, ultrassonic) {
+    sendDistanceUltrassonicToSocket(io, distance, ultrassonic) {
         io.emit('ultrassonic', {
             distance,
             ultrassonic

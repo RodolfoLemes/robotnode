@@ -48,6 +48,10 @@ class Ultrassonic {
 
         return averageMeasure
     }
+
+    stop() {
+        this.trigger.digitalWrite(0)
+    }
 }
 
 module.exports = Ultrassonic

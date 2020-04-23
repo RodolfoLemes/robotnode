@@ -1,14 +1,14 @@
 var Gpio = require('pigpio').Gpio
 
 var motorA = [ // Motor da DIREITA
-    new Gpio(4, {mode: Gpio.OUTPUT}),
+    new Gpio(4, {mode: Gpio.OUTPUT}), // d7 e d8
     new Gpio(27, {mode: Gpio.OUTPUT})
 ]
 var motorB = [ // Motor da ESQUERDA
-    new Gpio(23, {mode: Gpio.OUTPUT}),
+    new Gpio(23, {mode: Gpio.OUTPUT}), // d4 e d9
     new Gpio(24, {mode: Gpio.OUTPUT})
 ]
-var pwmPin = [
+var pwmPin = [ // d5 e d6
     new Gpio(12, {mode: Gpio.OUTPUT}), // DIREITA
     new Gpio(13, {mode: Gpio.OUTPUT})  // ESQUERDA
 ]
