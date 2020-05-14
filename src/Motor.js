@@ -14,6 +14,9 @@ var pwmPin = [ // d5 e d6
 ]
 
 module.exports = {
+    pwmValueForward = 122, // Calibra a ida para frente do motor B, pois ele da Ré na função Forward
+    pwmValueBackward = 122,// Calibra a ida para trás do motor A, pois ele da Ré na função Backward
+
     regularPWM(motor, pwm) {
         if(motor == 'A') {
             pwmPin[0].pwmWrite(pwm)
@@ -74,5 +77,63 @@ module.exports = {
                 motorB[pin].digitalWrite(0)
             }
         }
-    }
+    },
+
+    setInitialPosition(encoderA, encoderB) {
+        this.shutdown(true)
+        pwmPin[0].pwmWrite(122)
+        pwmPin[1].pwmWrite(122)
+        encoderA.reset()
+        encoderB.reset()
+
+        // Seta motor A
+        motorA[0].digitalWrite(1)
+        motorA[1].digitalWrite(0)
+        while(true) {
+            let cont = encoderA.getRealCont()
+            if(cont > 1) {
+                motorA[0].digitalWrite(0)
+                motorA[1].digitalWrite(0)
+                break
+            }
+        }
+
+        // Seta motor B
+        motorB[1].digitalWrite(0)
+        motorB[0].digitalWrite(1)
+        while(true) {
+            let cont = encoderB.getRealCont()
+            if(cont > 1) {
+                motorB[0].digitalWrite(0)
+                motorB[1].digitalWrite(0)
+                break
+            }
+        }
+    },
+
+    calibrateForward(encoderA, encoderB) {
+        let initValue = 122
+        pwmPin[0].pwmWrite(122)
+        pwmPin[1].pwmWrite(initValue)
+
+        this.setInitialPosition()
+        this.forward()
+
+        while(true) {
+            let contA = encoderA.getRealCont()
+            let contB = encoderB.getRealCont()
+
+            if(contA > 2) {
+                if(contA === contB) {
+                    break
+                } else {
+                    pwmPin[1] = pwmWrite(initValue + 1)
+                    encoderA.reset()
+                    encoderB.reset()
+                }
+            }
+        }
+    },
+
+
 }

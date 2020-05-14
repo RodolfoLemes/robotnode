@@ -15,10 +15,10 @@ class Encoder {
             edge: Gpio.FALLING_EDGE
         })
 
-        this.gpio.on('interrupt', () => {
+        this.gpio.on('interrupt', (level, tick) => {
+            console.log(level + '--' + tick)
             this.cont++
-            this.setDistance();
-            console.log(this.cont)
+            this.setDistance()
             io.emit('encoder', { 
                     type: this.motor,
                     encoder: {
@@ -39,6 +39,15 @@ class Encoder {
 
     getCont() {
         return (this.cont / 2)
+    }
+
+    getRealCont() {
+        return this.cont
+    }
+
+    reset() {
+        this.cont = 0
+        this.distance = 0
     }
 
 }

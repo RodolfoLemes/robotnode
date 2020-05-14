@@ -41,7 +41,6 @@ class Ultrassonic {
             await delay(100)
         }
 
-        console.log(this.measures)
         var averageMeasure = 0
         for(let measure of this.measures) {
             averageMeasure = averageMeasure + measure
